@@ -1,0 +1,37 @@
+{% extends 'graph/base.html' %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'graph/login.css' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+{% endblock links %}
+{% block content %}
+
+
+<div class="algn1">
+        {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} mt-2 text-center">
+                {{message}}
+              </div>
+            {% endfor %}
+          {% endif %}
+</div>
+<div class="algn">
+    
+<div class="login-form">
+    <div class="form-title">
+        <h1>Login</h1>
+    </div>
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+    <label><input type="text" placeholder="Username" name="username" id="username" required></label>
+    <label><input type="password" placeholder="Password" name="password" id="password" required></label>
+    <button class="red" type="submit"><i class="fa fa-lock" aria-hidden="true"></i> Login</button>
+    <p>Don't have an account? </p><a href="{% url 'register' %}" style="text-decoration: none;"><p>Register here!</p></a>
+</form>
+    
+</div>
+</div>
+{% endblock content %}
