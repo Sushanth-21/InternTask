@@ -1,5 +1,5 @@
 def next_num(series):
-    size=len(series)
+    size=len(series) + 1
     if size%2==0:
         num=(size+1)*(size+1)-1
     else:
